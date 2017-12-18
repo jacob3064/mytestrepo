@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# Start demo application...
+#
+
+PID=31001
+
+case "$1" in
+  start)
+        echo "Starting server_loader.."
+
+        /root/video_server/server_loader -p $PID
+        ;;
+  stop)
+        echo -n "Stopping video server.."
+        echo "  -- empty --"
+        ;;
+  restart|reload)
+        "$0" stop
+        "$0" start
+        ;;
+  *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+esac
+
+exit $?
